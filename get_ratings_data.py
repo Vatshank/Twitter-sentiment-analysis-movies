@@ -32,7 +32,7 @@ for movie in movie_list:
 	##Calling the Themoviedb.org API using IMDb ID obtained above to get another set of ratings as some
 	##of the the ratings returned by the OMDb API are marked 'N/A'
 	api_key = ''
-	response = urllib2.urlopen('http://api.themoviedb.org/3/search/movie?api_key='+'&query=' + title)
+	response = urllib2.urlopen('http://api.themoviedb.org/3/search/movie?api_key='+api_key+'&query=' + title)
 	json_res = json.loads(response.read())
 	movie_data[movie]['tmdbRating'] = json_res['results'][0]['vote_average']
 	##Average rating
