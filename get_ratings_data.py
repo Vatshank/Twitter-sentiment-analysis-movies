@@ -39,8 +39,8 @@ for movie in movie_list:
 	movie_data[movie]['z_score'] = z_scores[movie]
 	##Add 'pickled' z-scores to this dictionary
 
-# with open('ratings_data','w') as f:
-# 	pickle.dump(movie_data, f)
+with open('ratings_data','w') as f:
+	pickle.dump(movie_data, f)
 
 
 ##Plotting
@@ -57,16 +57,6 @@ plt.scatter(b,a)
 plt.plot(b_mat[:,0], int(m)*b_mat[:,0] + c, 'b', label='All points')
 for count,(i,j) in enumerate(zip(b,a)):
 	plt.annotate(movie_data.keys()[count], xy=(i,j),textcoords='offset points')
-
-##Removing the outliar and replotting the line
-# del(a[6])
-# del(b[6])
-# a_ = a
-# b_ = b
-# b_mat_ = np.append(np.matrix(b_).T,np.matrix(np.ones(len(b_))).T, axis = 1)
-# a_mat_ = np.matrix(a_)
-# m_, c_ = np.linalg.lstsq(b_mat_, a_mat_.T)[0]
-# plt.plot(b_mat_[:,0], int(m_)*b_mat_[:,0] + c_, 'r--', label='Without outliar')
 
 plt.title('Average rating of movies v/s Nature of tweets')
 plt.xlabel('Ratio of the number of negative tweets to positive tweets')
